@@ -1,5 +1,6 @@
 <h1>GOT family tree</h1>
 
+<!--
 <div class="container">
   <ng-container
     *ngFor="let character of gotFamilytree"
@@ -29,3 +30,11 @@
   </ng-template>
 
 </div>
+-->
+
+<ng-template let-data #template>
+  <h1>Test {{data | json}}</h1>
+</ng-template>
+
+<character *ngFor="let character of gotFamilytree" [character]="character">
+</character>

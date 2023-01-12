@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import {CharacterActionsComponent, GotCharacterComponent} from "./got-character.component";
+import {CharacterComponent} from "./character.component";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import {CharacterActionsComponent, GotCharacterComponent} from "./got-character.
   imports: [
     BrowserModule,
     GotCharacterComponent,
-    CharacterActionsComponent
+    CharacterActionsComponent,
+    CharacterComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
