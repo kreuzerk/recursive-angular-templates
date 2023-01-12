@@ -7,12 +7,28 @@ export interface GotCharacter {
 }
 
 @Component({
+  selector: 'app-got-character-actions',
+  template: `
+    <ng-content></ng-content>`,
+  standalone: true
+})
+export class CharacterActionsComponent {
+}
+
+@Component({
   selector: 'app-got-character',
   template: `
-    <div *ngIf="expandInitially" class="got-character" style="--level: {{level}};" (click)="toggle()">
-      <div class="image-placeholder  {{character?.color}}"></div>
-      {{character?.name}}
-    </div>
+      <div *ngIf="expandInitially" class="got-character" style="--level: {{level}};" (click)="toggle()">
+          <div class="row">
+              <div class="image-placeholder  {{character?.color}}"></div>
+              {{character?.name}}
+          </div>
+          <div class="row actions-row">
+            <ng-content select="app-got-character-actions"></ng-content>
+              <span *ngIf="!expand" class="material-symbols-outlined">expand_more</span>
+              <span *ngIf="expand" class="material-symbols-outlined">expand_less</span>
+          </div>
+      </div>
   `,
   styles: [`
     :host {
@@ -23,12 +39,18 @@ export interface GotCharacter {
     .got-character {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       border: 0.5px solid lightgrey;
       border-radius: 5px;
       padding: 5px;
       box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
       margin-left: calc(var(--level) * 20px);
       cursor: pointer;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
     }
 
     .image-placeholder {
@@ -49,6 +71,10 @@ export interface GotCharacter {
       &.green {
         background-color: green;
       }
+    }
+
+    .actions-row {
+      color: darkgray;
     }
 
   `],

@@ -14,7 +14,12 @@
       [character]="$any({name: character.name, color: character.color})"
       [level]="level"
       [expandInitially]="expanded"
-    ></app-got-character>
+    >
+      <app-got-character-actions>
+        <span class="material-symbols-outlined">info</span>
+      </app-got-character-actions>
+    </app-got-character>
+
 
     <ng-container
       *ngFor="let child of character.children"

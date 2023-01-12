@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {GotCharacterComponent} from "./got-character.component";
+import {CharacterActionsComponent, GotCharacterComponent} from "./got-character.component";
 
 @NgModule({
   declarations: [
@@ -10,7 +10,8 @@ import {GotCharacterComponent} from "./got-character.component";
   ],
   imports: [
     BrowserModule,
-    GotCharacterComponent
+    GotCharacterComponent,
+    CharacterActionsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
