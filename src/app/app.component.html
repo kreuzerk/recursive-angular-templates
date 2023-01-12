@@ -4,19 +4,22 @@
   <ng-container
     *ngFor="let character of gotFamilytree"
     [ngTemplateOutlet]="characterTemplate"
-    [ngTemplateOutletContext]="{ $implicit: character, level: 0 }"
+    [ngTemplateOutletContext]="{ $implicit: character, level: 0, expanded: true }"
   >
   </ng-container>
 
-  <ng-template #characterTemplate let-character let-level="level">
+  <ng-template #characterTemplate let-character let-level="level" let-expanded="expanded">
     <app-got-character
+      #characterComponent
       [character]="$any({name: character.name, color: character.color})"
       [level]="level"
+      [expandInitially]="expanded"
     ></app-got-character>
+
     <ng-container
       *ngFor="let child of character.children"
       [ngTemplateOutlet]="characterTemplate"
-      [ngTemplateOutletContext]="{ $implicit: child, level: level + 1 }">
+      [ngTemplateOutletContext]="{ $implicit: child, level: level + 1, expanded: characterComponent.expand }">
     </ng-container>
   </ng-template>
 
